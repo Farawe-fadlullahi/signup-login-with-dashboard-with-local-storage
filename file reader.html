@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>file reader</title>
+</head>
+<body>
+    <input type="file" onchange="catchfile(event)" name="" id="myfiles">
+    <img id="image" src="" alt="">
+    <button onclick="next()">next</button>
+    <button onclick="prev()">prev</button>
+</body>
+</html>
+<script>
+    let array=[]
+    let x=0
+    function catchfile(el) {
+        console.log(el)
+        console.log(el.target.files[0]);
+        let file = el.target.files[0]
+        console.log(file);
+        let reader = new FileReader()
+                console.log(reader);
+        reader.onload = function read(file) {
+                // Pass the data URL to the callback function
+                console.log(reader);
+                console.log(reader.result);
+                document.getElementById("image").src = reader.result//the url
+               array.push(reader.result)
+               console.log(array);
+        };
+        reader.readAsDataURL(file)
+    }
+    function next() {
+        x++
+    }
+
+</script>
